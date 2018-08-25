@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">PopularMovies</string>
+    <string name="action_settings">Settings</string>
+    <string name="parcel_movie">PARCEL_MOVIE</string>
+    <string name="pref_sort_method_key">SORT_METHOD</string>
+    <string name="error_need_internet">This application needs Internet connection to function. Check your Internet connection</string>
+    <string name="tmdb_sort_pop_desc">popularity.desc</string>
+    <string name="action_popular">Most Popular</string>
+    <string name="action_favourite">Favourites</string>
+    <string name="action_rated">Most Rated</string>
+    <string name="tmdb_sort_rate_avg_desc">vote_average.desc</string>
+    <string name="action_about">About App</string>
+</resources>
