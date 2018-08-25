@@ -1,5 +1,5 @@
 # PopularMovies App
-<img align="centre" src="https://github.com/RegNex/PopularMovies/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"/>
+<img align="center" src="https://github.com/RegNex/PopularMovies/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"/>
 PopularMovies App is an application that displays movies using themoviedb.org api. This is udacity Android developer nanodegree popularMovies stage 1
 
 ## Screenshots
