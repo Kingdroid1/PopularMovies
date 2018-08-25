@@ -19,11 +19,15 @@ git clone https://github.com/RegNex/PopularMovies.git
 Then 
 locate the project on your system and open with android studio
 
-create a file api_key.xml under the res folder thus,
+add api key to api_key.xml under the res folder thus,
+```
 PopularMovies\app\src\main\res\values\api_key.xml
+```
 
 and added your api key from themoviedb.org
+```
 <string name="movie_api_key">YOUR_API_KEY_HERE</string>
+```
 
 
 ## Prerequisites
