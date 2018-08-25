@@ -27,8 +27,8 @@
         </activity>
         <activity
             android:name=".activities.MovieDetailsActivity"
-            android:theme="@style/ActivityTheme"
-            android:label="@string/movie_details" />
+            android:label="@string/movie_details"
+            android:theme="@style/ActivityTheme" />
         <activity
             android:name=".activities.SplashActivity"
             android:theme="@style/ActivityTheme">
@@ -38,6 +38,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.AboutActivity"
+            android:label="@string/action_about" />
     </application>
 
 </manifest>
