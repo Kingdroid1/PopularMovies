@@ -27,9 +27,10 @@ import co.etornam.popularmovies.model.Movie;
 
 
 public class MainActivity extends AppCompatActivity {
-private GridView gridView;
-private FloatingActionButton fab;
-private String TAG = MainActivity.class.getSimpleName();
+    private GridView gridView;
+    private FloatingActionButton fab;
+    private String TAG = MainActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,17 +75,17 @@ private String TAG = MainActivity.class.getSimpleName();
             @Override
             public void onClick(View view) {
                 PopupMenu popupMenu = new PopupMenu(MainActivity.this, view);
-                popupMenu.getMenuInflater().inflate(R.menu.menu_main,popupMenu.getMenu());
+                popupMenu.getMenuInflater().inflate(R.menu.menu_main, popupMenu.getMenu());
 
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        if (item.getItemId() == R.id.action_popular){
+                        if (item.getItemId() == R.id.action_popular) {
                             updateSharedPrefs(getString(R.string.tmdb_sort_pop_desc));
                             getMovieData(getSortMethod());
-                        }else if (item.getItemId() == R.id.action_favourite){
+                        } else if (item.getItemId() == R.id.action_favourite) {
                             Toast.makeText(MainActivity.this, "Favourites", Toast.LENGTH_SHORT).show();
-                        }else if (item.getItemId() == R.id.action_rated){
+                        } else if (item.getItemId() == R.id.action_rated) {
                             updateSharedPrefs(getString(R.string.tmdb_sort_rate_avg_desc));
                             getMovieData(getSortMethod());
                         }
@@ -156,7 +157,7 @@ private String TAG = MainActivity.class.getSimpleName();
             };
 
             // Execute task
-            FetchMovieAsyncTask movieTask = new FetchMovieAsyncTask(apiKey,taskCompleted);
+            FetchMovieAsyncTask movieTask = new FetchMovieAsyncTask(apiKey, taskCompleted);
             movieTask.execute(sortMethod);
         } else {
             Toast.makeText(this, getString(R.string.error_need_internet), Toast.LENGTH_LONG).show();
