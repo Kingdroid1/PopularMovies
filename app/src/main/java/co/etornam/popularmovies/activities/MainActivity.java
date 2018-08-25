@@ -1,4 +1,4 @@
-package co.etornam.popularmovies;
+package co.etornam.popularmovies.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,6 @@ import android.widget.GridView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import co.etornam.popularmovies.activities.MovieDetailsActivity;
 import co.etornam.popularmovies.helpers.FetchMovieAsyncTask;
 import co.etornam.popularmovies.helpers.ImageAdapter;
 import co.etornam.popularmovies.helpers.OnTaskCompleted;
