@@ -22,4 +22,6 @@
     <string name="action_about">About App</string>
     <string name="movie_details">Movie Details</string>
     <string name="navigation_back">Navigation Back</string>
+    <string name="about_desc">PopularMovies App is an application that displays movies using themoviedb.org api. This is udacity Android developer nanodegree popularMovies stage 1</string>
+    <string name="version">version 1.0.0</string>
 </resources>
