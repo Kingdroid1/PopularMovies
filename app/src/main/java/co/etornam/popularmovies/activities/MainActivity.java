@@ -61,8 +61,8 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Movie movie = (Movie) parent.getItemAtPosition(position);
                 Intent intent = new Intent(getApplicationContext(), MovieDetailsActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 intent.putExtra(getResources().getString(R.string.parcel_movie), movie);
-
                 startActivity(intent);
             }
         });
@@ -79,11 +79,13 @@ public class MainActivity extends AppCompatActivity {
                         if (item.getItemId() == R.id.action_popular) {
                             updateSharedPrefs(getString(R.string.tmdb_sort_pop_desc));
                             getMovieData(getSortMethod());
+                            toolbar.setTitle(getResources().getString(R.string.action_popular));
                         } else if (item.getItemId() == R.id.action_favourite) {
                             Toast.makeText(MainActivity.this, "Favourites", Toast.LENGTH_SHORT).show();
                         } else if (item.getItemId() == R.id.action_rated) {
                             updateSharedPrefs(getString(R.string.tmdb_sort_rate_avg_desc));
                             getMovieData(getSortMethod());
+                            toolbar.setTitle(getResources().getString(R.string.action_rated));
                         }
                         return false;
                     }
