@@ -7,11 +7,6 @@
         android:title="@string/action_popular" />
 
     <item
-        android:id="@+id/action_favourite"
-        android:orderInCategory="100"
-        android:title="@string/action_favourite" />
-
-    <item
         android:id="@+id/action_rated"
         android:orderInCategory="100"
         android:title="@string/action_rated" />

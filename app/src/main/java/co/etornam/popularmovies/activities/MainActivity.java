@@ -84,8 +84,6 @@ public class MainActivity extends AppCompatActivity {
                             updateSharedPrefs(getString(R.string.tmdb_sort_pop_desc));
                             getMovieData(getSortMethod());
                             toolbar.setTitle(getResources().getString(R.string.action_popular));
-                        } else if (item.getItemId() == R.id.action_favourite) {
-                            Toast.makeText(MainActivity.this, "Favourites", Toast.LENGTH_SHORT).show();
                         } else if (item.getItemId() == R.id.action_rated) {
                             updateSharedPrefs(getString(R.string.tmdb_sort_rate_avg_desc));
                             getMovieData(getSortMethod());
