@@ -9,6 +9,16 @@
     <string name="action_favourite">Favourites</string>
     <string name="action_rated">Most Rated</string>
     <string name="tmdb_sort_rate_avg_desc">vote_average.desc</string>
+    <string name="description_movie_poster">Contains poster of movie</string>
+    <string name="heading_release_date">Release Date</string>
+    <string name="heading_vote_average">Vote Average</string>
+    <string name="no_release_date_found">No release date found</string>
+    <string name="no_summary_found">No summary was found</string>
+    <string name="example_original_title">The Green Poster Man</string>
+    <string name="example_release_date">08–25–2018</string>
+    <string name="example_vote_average">6.1/10</string>
+    <string name="example_overview">Volare hic ducunt ad flavum ausus. Cannabiss cadunt! A falsis, devatio teres diatria. Exemplar albus extum est. Est bi-color zirbus, cesaris.</string>
+
     <string name="action_about">About App</string>
     <string name="movie_details">Movie Details</string>
 </resources>

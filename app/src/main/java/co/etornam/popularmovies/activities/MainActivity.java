@@ -19,6 +19,7 @@ import android.widget.GridView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import co.etornam.popularmovies.R;
 import co.etornam.popularmovies.helpers.FetchMovieAsyncTask;
 import co.etornam.popularmovies.helpers.ImageAdapter;
 import co.etornam.popularmovies.helpers.OnTaskCompleted;
@@ -40,11 +41,8 @@ public class MainActivity extends AppCompatActivity {
         gridView = findViewById(R.id.gridView);
 
         if (savedInstanceState == null) {
-            // Get data from the Internet
             getMovieData(getSortMethod());
         } else {
-            // Get data from local resources
-            // Get Movie objects
             Parcelable[] parcelable = savedInstanceState.
                     getParcelableArray(getString(R.string.parcel_movie));
 
@@ -55,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
                     movies[i] = (Movie) parcelable[i];
                 }
 
-                // Load movie objects into view
                 gridView.setAdapter(new ImageAdapter(this, movies));
             }
         }
@@ -101,13 +98,11 @@ public class MainActivity extends AppCompatActivity {
 
         int numMovieObjects = gridView.getCount();
         if (numMovieObjects > 0) {
-            // Get Movie objects from gridview
             Movie[] movies = new Movie[numMovieObjects];
             for (int i = 0; i < numMovieObjects; i++) {
                 movies[i] = (Movie) gridView.getItemAtPosition(i);
             }
 
-            // Save Movie objects to bundle
             outState.putParcelableArray(getString(R.string.parcel_movie), movies);
         }
 
@@ -116,19 +111,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_toolbar, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_about) {
             return true;
         }
@@ -145,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void getMovieData(String sortMethod) {
         if (isNetworkAvailable()) {
-            // Key needed to get data from TMDb
             String apiKey = getString(R.string.movie_api_key);
 
             OnTaskCompleted taskCompleted = new OnTaskCompleted() {
@@ -155,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-            // Execute task
             FetchMovieAsyncTask movieTask = new FetchMovieAsyncTask(apiKey, taskCompleted);
             movieTask.execute(sortMethod);
         } else {

@@ -3,8 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="co.etornam.popularmovies">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name=".PopularMovies"
         android:allowBackup="true"
@@ -21,12 +22,22 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activities.MovieDetailsActivity"
+            android:theme="@style/ActivityTheme"
             android:label="@string/movie_details" />
+        <activity
+            android:name=".activities.SplashActivity"
+            android:theme="@style/ActivityTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
