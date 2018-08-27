@@ -4,11 +4,11 @@
     <string name="parcel_movie">PARCEL_MOVIE</string>
     <string name="pref_sort_method_key">SORT_METHOD</string>
     <string name="error_need_internet">This application needs Internet connection to function. Please check your Internet connection</string>
-    <string name="tmdb_sort_pop_desc">popularity.desc</string>
+    <string name="tmdb_sort_pop_desc">popular</string>
     <string name="action_popular">Most Popular</string>
     <string name="action_favourite">Favourites</string>
     <string name="action_rated">Most Rated</string>
-    <string name="tmdb_sort_rate_avg_desc">vote_average.desc</string>
+    <string name="tmdb_sort_rate_avg_desc">top_rated</string>
     <string name="description_movie_poster">Contains poster of movie</string>
     <string name="heading_release_date">Release Date</string>
     <string name="heading_vote_average">Vote Average</string>

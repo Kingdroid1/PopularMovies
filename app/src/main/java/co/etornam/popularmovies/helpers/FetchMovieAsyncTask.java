@@ -22,11 +22,12 @@ public class FetchMovieAsyncTask extends AsyncTask<String, Void, Movie[]> {
     private String TAG = FetchMovieAsyncTask.class.getSimpleName();
     private String apiKey;
     private OnTaskCompleted taskCompleted;
+    private String sort;
 
-    public FetchMovieAsyncTask(String apiKey, OnTaskCompleted taskCompleted) {
-        super();
+    public FetchMovieAsyncTask(String apiKey, OnTaskCompleted taskCompleted, String sort) {
         this.apiKey = apiKey;
         this.taskCompleted = taskCompleted;
+        this.sort = sort;
     }
 
     @Override
@@ -35,7 +36,7 @@ public class FetchMovieAsyncTask extends AsyncTask<String, Void, Movie[]> {
         BufferedReader bufferedReader = null;
         String moviesJsonStr = null;
         try {
-            URL url = getApiUrl(strings);
+            URL url = getApiUrl(sort);
 
             // Start connecting to get JSON
             httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -91,17 +92,16 @@ public class FetchMovieAsyncTask extends AsyncTask<String, Void, Movie[]> {
         return null;
     }
 
-    private URL getApiUrl(String[] strings) throws MalformedURLException {
-        final String TMDB_BASE_URL = "https://api.themoviedb.org/3/discover/movie?";
-        final String SORT_BY_PARAM = "sort_by";
-        final String API_KEY_PARAM = "api_key";
-
-        Uri builtUri = Uri.parse(TMDB_BASE_URL).buildUpon()
-                .appendQueryParameter(SORT_BY_PARAM, strings[0])
-                .appendQueryParameter(API_KEY_PARAM, apiKey)
-                .build();
-
-        return new URL(builtUri.toString());
+    private URL getApiUrl(String sort) throws MalformedURLException {
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("https")
+                .authority("api.themoviedb.org")
+                .appendPath("3")
+                .appendPath("movie")
+                .appendPath(sort)
+                .appendQueryParameter("api_key", apiKey);
+        Log.d(TAG, "getApiUrl: " + builder.build().toString());
+        return new URL(builder.build().toString());
     }
 
     private Movie[] getMoviesDataFromJson(String moviesJsonStr) throws JSONException {

@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-            FetchMovieAsyncTask movieTask = new FetchMovieAsyncTask(apiKey, taskCompleted);
+            FetchMovieAsyncTask movieTask = new FetchMovieAsyncTask(apiKey, taskCompleted, getSortMethod());
             movieTask.execute(sortMethod);
         } else {
             final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
