@@ -1,6 +1,7 @@
 package co.etornam.popularmovies.activities;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -9,17 +10,19 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import co.etornam.popularmovies.R;
 import co.etornam.popularmovies.helpers.FetchMovieAsyncTask;
@@ -27,11 +30,14 @@ import co.etornam.popularmovies.helpers.ImageAdapter;
 import co.etornam.popularmovies.helpers.OnTaskCompleted;
 import co.etornam.popularmovies.model.Movie;
 
+import static co.etornam.popularmovies.R.string.error_need_internet;
+
 
 public class MainActivity extends AppCompatActivity {
     private GridView gridView;
     private FloatingActionButton fab;
     private String TAG = MainActivity.class.getSimpleName();
+    private int myLastVisiblePos;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -43,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         fab = findViewById(R.id.fab);
         gridView = findViewById(R.id.gridView);
+        myLastVisiblePos = gridView.getFirstVisiblePosition();
 
         if (savedInstanceState == null) {
             getMovieData(getSortMethod());
@@ -70,6 +77,29 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        gridView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                int currentFirstVisPos = view.getFirstVisiblePosition();
+                if (currentFirstVisPos > myLastVisiblePos) {
+                    if (fab.isShown()) {
+                        fab.setVisibility(View.GONE);
+                    }
+                } else if (currentFirstVisPos < myLastVisiblePos) {
+                    if (!fab.isShown()) {
+                        fab.setVisibility(View.VISIBLE);
+                    }
+                }
+                myLastVisiblePos = currentFirstVisPos;
+            }
+        });
+
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,7 +182,23 @@ public class MainActivity extends AppCompatActivity {
             FetchMovieAsyncTask movieTask = new FetchMovieAsyncTask(apiKey, taskCompleted);
             movieTask.execute(sortMethod);
         } else {
-            Toast.makeText(this, getString(R.string.error_need_internet), Toast.LENGTH_LONG).show();
+            final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+            dialog.setTitle(getString(R.string.no_internet))
+                    .setMessage(getString(error_need_internet))
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                            Intent myIntent = new Intent(Settings.ACTION_SETTINGS);
+                            startActivity(myIntent);
+                        }
+                    })
+                    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+
+                        }
+                    });
+            dialog.show();
         }
     }
 

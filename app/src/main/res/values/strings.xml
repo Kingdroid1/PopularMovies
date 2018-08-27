@@ -3,7 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="parcel_movie">PARCEL_MOVIE</string>
     <string name="pref_sort_method_key">SORT_METHOD</string>
-    <string name="error_need_internet">This application needs Internet connection to function. Check your Internet connection</string>
+    <string name="error_need_internet">This application needs Internet connection to function. Please check your Internet connection</string>
     <string name="tmdb_sort_pop_desc">popularity.desc</string>
     <string name="action_popular">Most Popular</string>
     <string name="action_favourite">Favourites</string>
@@ -18,10 +18,10 @@
     <string name="example_release_date">08–25–2018</string>
     <string name="example_vote_average">6.1/10</string>
     <string name="example_overview">Volare hic ducunt ad flavum ausus. Cannabiss cadunt! A falsis, devatio teres diatria. Exemplar albus extum est. Est bi-color zirbus, cesaris.</string>
-
     <string name="action_about">About App</string>
     <string name="movie_details">Movie Details</string>
     <string name="navigation_back">Navigation Back</string>
     <string name="about_desc">PopularMovies App is an application that displays movies using themoviedb.org api. This is udacity Android developer nanodegree popularMovies stage 1</string>
     <string name="version">version 1.0.0</string>
+    <string name="no_internet">No Internet</string>
 </resources>
