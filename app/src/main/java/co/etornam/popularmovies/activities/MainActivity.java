@@ -24,6 +24,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.PopupMenu;
 
+import co.etornam.popularmovies.BuildConfig;
 import co.etornam.popularmovies.R;
 import co.etornam.popularmovies.helpers.FetchMovieAsyncTask;
 import co.etornam.popularmovies.helpers.ImageAdapter;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton fab;
     private String TAG = MainActivity.class.getSimpleName();
     private int myLastVisiblePos;
+    private final String API_KEY = BuildConfig.API_KEY;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -170,8 +172,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void getMovieData(String sortMethod) {
         if (isNetworkAvailable()) {
-            String apiKey = getString(R.string.movie_api_key);
-
             OnTaskCompleted taskCompleted = new OnTaskCompleted() {
                 @Override
                 public void onFetchMoviesTaskCompleted(Movie[] movies) {
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-            FetchMovieAsyncTask movieTask = new FetchMovieAsyncTask(apiKey, taskCompleted, getSortMethod());
+            FetchMovieAsyncTask movieTask = new FetchMovieAsyncTask(API_KEY, taskCompleted, getSortMethod());
             movieTask.execute(sortMethod);
         } else {
             final AlertDialog.Builder dialog = new AlertDialog.Builder(this);

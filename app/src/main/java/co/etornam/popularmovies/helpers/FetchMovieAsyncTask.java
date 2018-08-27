@@ -34,7 +34,7 @@ public class FetchMovieAsyncTask extends AsyncTask<String, Void, Movie[]> {
     protected Movie[] doInBackground(String... strings) {
         HttpURLConnection httpURLConnection = null;
         BufferedReader bufferedReader = null;
-        String moviesJsonStr = null;
+        String moviesJsonStr;
         try {
             URL url = getApiUrl(sort);
 
@@ -64,10 +64,10 @@ public class FetchMovieAsyncTask extends AsyncTask<String, Void, Movie[]> {
             }
 
             moviesJsonStr = builder.toString();
-        }catch (IOException e) {
+        } catch (IOException e) {
             Log.d(TAG, "Error :", e);
             return null;
-        }finally {
+        } finally {
             // Tidy up: release url connection and buffered reader
             if (httpURLConnection != null) {
                 httpURLConnection.disconnect();
